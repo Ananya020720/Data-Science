@@ -1,7 +1,18 @@
 import streamlit as st
+
+def install_package(package):
+    try:
+        __import__(package)
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# Install required packages
+required_packages = ['scikit-learn', 'pandas', 'numpy']
+for package in required_packages:
+    install_package(package)
+
 import pandas as pd
 import numpy as np
-!pip install scikit-learn
 from sklearn.datasets import load_breast_cancer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
