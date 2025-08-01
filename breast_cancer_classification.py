@@ -1,24 +1,4 @@
-import streamlit as st
-import subprocess
-import sys
-
-# Function to install packages if not available
-def install_package(package):
-    try:
-        __import__(package)
-    except ImportError:
-        try:
-            # Try with --user flag to avoid permission issues
-            subprocess.check_call([sys.executable, "-m", "pip", "install", "--user", package])
-        except subprocess.CalledProcessError:
-            # If that fails, try without --user
-            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-# Install required packages
-required_packages = ['scikit-learn', 'pandas', 'numpy']
-for package in required_packages:
-    install_package(package)
-    
+import streamlit as st  
 import pandas as pd
 import numpy as np
 from sklearn.datasets import load_breast_cancer
