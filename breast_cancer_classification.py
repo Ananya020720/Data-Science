@@ -1,4 +1,6 @@
 import streamlit as st
+import subprocess
+import sys
 
 def install_package(package):
     try:
